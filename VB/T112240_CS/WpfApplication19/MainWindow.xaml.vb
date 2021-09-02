@@ -1,5 +1,4 @@
-﻿Imports Microsoft.VisualBasic
-Imports System
+﻿Imports System
 Imports System.Collections.Generic
 Imports System.Globalization
 Imports System.Windows
@@ -10,6 +9,7 @@ Namespace WpfApplication19
 
 	Partial Public Class MainWindow
 		Inherits Window
+
 		Public Sub New()
 			InitializeComponent()
 			DataContext = New MyModel()
@@ -17,40 +17,43 @@ Namespace WpfApplication19
 	End Class
 
 	Public Class DateTimePoint
-		Private value_Renamed As Double
-		Private argument_Renamed As DateTime
+'INSTANT VB NOTE: The field value was renamed since Visual Basic does not allow fields to have the same name as other class members:
+		Private value_Conflict As Double
+'INSTANT VB NOTE: The field argument was renamed since Visual Basic does not allow fields to have the same name as other class members:
+		Private argument_Conflict As DateTime
 
 		Public ReadOnly Property Value() As Double
 			Get
-				Return value_Renamed
+				Return value_Conflict
 			End Get
 		End Property
 
 		Public ReadOnly Property Argument() As DateTime
 			Get
-				Return argument_Renamed
+				Return argument_Conflict
 			End Get
 		End Property
 
 		Public Sub New(ByVal argument As DateTime, ByVal value As Double)
-			Me.argument_Renamed = argument
-			Me.value_Renamed = value
+			Me.argument_Conflict = argument
+			Me.value_Conflict = value
 		End Sub
 	End Class
 
 	Public Class MyModel
-		Private rate_Renamed As New List(Of DateTimePoint)()
+'INSTANT VB NOTE: The field rate was renamed since Visual Basic does not allow fields to have the same name as other class members:
+		Private rate_Conflict As New List(Of DateTimePoint)()
 
 		Public ReadOnly Property Rate() As List(Of DateTimePoint)
 			Get
-				Return rate_Renamed
+				Return rate_Conflict
 			End Get
 		End Property
 
 
 		Public Sub New()
 
-			LoadPoints(rate_Renamed, LoadFromFile("/GbpUsdRate.xml"))
+			LoadPoints(rate_Conflict, LoadFromFile("/GbpUsdRate.xml"))
 		End Sub
 
 		Private Function LoadFromFile(ByVal xmlFile As String) As XDocument
